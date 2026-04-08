@@ -1,10 +1,10 @@
-# is-a-dev Registration
+# is-a-dev-registration
 
-This repository contains the necessary files for registering a custom subdomain via is-a.dev for outbound email using Resend.
+This repository is created for registering a custom subdomain via is-a.dev for outbound email. The goal is to enable the use of a real sending domain for the Resend service to reach external customers, partners, and users.
 
-## Steps to Register a Domain
-1. **Fork the Repository**: Fork the repository at [is-a-dev/register](https://github.com/is-a-dev/register).
-2. **Create Domain Configuration**: The domain configuration file is located at `domains/paperclip.json`. It contains the following:
+## Steps to Register a Custom Domain
+1. **Fork the Repository**: Fork the is-a-dev/register repository.
+2. **Create Domain Registration JSON**: Prepare the following JSON file:
    ```json
    {
        "owner": {
@@ -16,10 +16,9 @@ This repository contains the necessary files for registering a custom subdomain 
        }
    }
    ```
-3. **Submit PR**: After forking and making changes, submit a Pull Request to the original repository.
-4. **Verify DNS**: Once approved, add the domain in the Resend dashboard at [resend.com/domains](https://resend.com/domains) and verify the DNS settings.
-5. **Update Configuration**: Update the `CORS_ORIGIN` and `WORKER_URL` in `wrangler.toml` if the domain changes.
-6. **Update Email Sending Code**: Ensure the `from` address in `worker/src/tools/comms.ts` is updated to use the new domain.
+3. **Submit Pull Request**: Add the JSON file to the repository and submit a Pull Request.
+4. **Configure Resend**: Once the PR is approved, log into the Resend dashboard to add the new domain. Verify any required DNS records.
+5. **Update Application Code**: Ensure that the `from` address in your application code (e.g., `worker/src/tools/comms.ts`) is updated to use the new domain.
 
-## Note
-Ensure all steps are followed carefully to avoid issues with email sending capabilities.
+## Additional Notes
+- Alternative free options for domain registration include js.org and eu.org if is-a.dev is not suitable.
