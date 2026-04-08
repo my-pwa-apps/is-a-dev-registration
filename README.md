@@ -1,10 +1,10 @@
-# is-a-dev-registration
+# Custom Domain Registration for Outbound Email
 
-This repository is created for registering a custom subdomain via is-a.dev for outbound email. The goal is to enable the use of a real sending domain for the Resend service to reach external customers, partners, and users.
+This repository is dedicated to registering a custom subdomain via is-a.dev for enabling outbound email functionality using Resend. Follow the steps below to complete the registration process.
 
 ## Steps to Register a Custom Domain
-1. **Fork the Repository**: Fork the is-a-dev/register repository.
-2. **Create Domain Registration JSON**: Prepare the following JSON file:
+1. **Fork the Repository**: Go to [is-a-dev/register](https://github.com/is-a-dev/register) and fork the repository.
+2. **Create Domain JSON**: Create a JSON file in the `domains` folder named `paperclip.json` with the following content:
    ```json
    {
        "owner": {
@@ -16,9 +16,11 @@ This repository is created for registering a custom subdomain via is-a.dev for o
        }
    }
    ```
-3. **Submit Pull Request**: Add the JSON file to the repository and submit a Pull Request.
-4. **Configure Resend**: Once the PR is approved, log into the Resend dashboard to add the new domain. Verify any required DNS records.
-5. **Update Application Code**: Ensure that the `from` address in your application code (e.g., `worker/src/tools/comms.ts`) is updated to use the new domain.
+3. **Submit a Pull Request**: After adding the JSON file, submit a Pull Request to the original repository and wait for it to be merged.
+4. **Add Domain in Resend**: Once the domain is approved, go to the Resend dashboard (resend.com/domains) and add the domain.
+5. **Verify DNS**: Copy the DNS TXT/MX records provided by Resend and add them to the is-a.dev zone (or wherever DNS is managed).
+6. **Update Configuration**: If the domain changes, update the `CORS_ORIGIN` and `WORKER_URL` in `wrangler.toml`.
+7. **Update Email Sending Code**: After the domain is live, update the `from` address in `worker/src/tools/comms.ts` to use the new domain.
 
-## Additional Notes
-- Alternative free options for domain registration include js.org and eu.org if is-a.dev is not suitable.
+## Conclusion
+Following these steps will ensure that the custom domain is successfully registered and configured for outbound emails.
