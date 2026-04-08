@@ -1,14 +1,25 @@
-# Custom Domain Registration for Outbound Email
+# is-a-dev Registration
 
-## Overview
-This repository contains the necessary JSON configuration for registering a custom subdomain via is-a.dev, enabling outbound email functionality through Resend.
+This repository is dedicated to registering a custom subdomain via the [is-a.dev](https://is-a.dev) service for use as an outbound email sender domain.
 
-## Steps to Register Domain
-1. **Fork the Repository**: Fork the repository from [is-a-dev/register](https://github.com/is-a-dev/register).
-2. **Create JSON Configuration**: The configuration file `domains/paperclip.json` has already been created. Ensure it contains the correct owner details and CNAME record.
-3. **Submit Pull Request**: Submit a PR with the changes to the main repository.
-4. **Verify Domain in Resend**: Once the domain is approved, add it to the Resend dashboard and verify the DNS settings.
-5. **Update Application Code**: Ensure the `from` address is updated in the application to use the new domain.
+## Steps to Register a Custom Domain
 
-## Additional Notes
-For any issues or further assistance, please refer to the [is-a.dev documentation](https://docs.is-a.dev/) or contact support.
+1. **Fork the Repository**: Start by forking this repository.
+2. **Prepare Domain Registration**: Create a JSON file to register the domain. The example JSON is provided in `domains/paperclip.json`.
+3. **Submit a Pull Request**: Once the JSON file is ready, submit a pull request to the original [is-a.dev/register](https://github.com/is-a-dev/register) repository.
+4. **Add Domain in Resend**: After the PR is approved, go to the Resend dashboard and add the new domain.
+5. **Verify DNS Records**: Ensure that the necessary DNS records are set up correctly.
+6. **Update Codebase**: Update the 'from' address in the `worker/src/tools/comms.ts` file to reflect the new domain.
+
+## Example Domain Registration JSON
+```json
+{
+    "owner": {
+        "username": "your-github",
+        "email": "your@email.com"
+    },
+    "record": {
+        "CNAME": "paperclip-ai.pages.dev"
+    }
+}
+```
