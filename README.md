@@ -1,26 +1,14 @@
 # Custom Domain Registration for Outbound Email
 
-This repository is dedicated to registering a custom subdomain via is-a.dev for enabling outbound email functionality using Resend. Follow the steps below to complete the registration process.
+## Overview
+This repository contains the necessary JSON configuration for registering a custom subdomain via is-a.dev, enabling outbound email functionality through Resend.
 
-## Steps to Register a Custom Domain
-1. **Fork the Repository**: Go to [is-a-dev/register](https://github.com/is-a-dev/register) and fork the repository.
-2. **Create Domain JSON**: Create a JSON file in the `domains` folder named `paperclip.json` with the following content:
-   ```json
-   {
-       "owner": {
-           "username": "your-github",
-           "email": "your@email.com"
-       },
-       "record": {
-           "CNAME": "paperclip-ai.pages.dev"
-       }
-   }
-   ```
-3. **Submit a Pull Request**: After adding the JSON file, submit a Pull Request to the original repository and wait for it to be merged.
-4. **Add Domain in Resend**: Once the domain is approved, go to the Resend dashboard (resend.com/domains) and add the domain.
-5. **Verify DNS**: Copy the DNS TXT/MX records provided by Resend and add them to the is-a.dev zone (or wherever DNS is managed).
-6. **Update Configuration**: If the domain changes, update the `CORS_ORIGIN` and `WORKER_URL` in `wrangler.toml`.
-7. **Update Email Sending Code**: After the domain is live, update the `from` address in `worker/src/tools/comms.ts` to use the new domain.
+## Steps to Register Domain
+1. **Fork the Repository**: Fork the repository from [is-a-dev/register](https://github.com/is-a-dev/register).
+2. **Create JSON Configuration**: The configuration file `domains/paperclip.json` has already been created. Ensure it contains the correct owner details and CNAME record.
+3. **Submit Pull Request**: Submit a PR with the changes to the main repository.
+4. **Verify Domain in Resend**: Once the domain is approved, add it to the Resend dashboard and verify the DNS settings.
+5. **Update Application Code**: Ensure the `from` address is updated in the application to use the new domain.
 
-## Conclusion
-Following these steps will ensure that the custom domain is successfully registered and configured for outbound emails.
+## Additional Notes
+For any issues or further assistance, please refer to the [is-a.dev documentation](https://docs.is-a.dev/) or contact support.
